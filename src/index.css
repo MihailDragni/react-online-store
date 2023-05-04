@@ -102,10 +102,69 @@ body {
   top: 30px;
   right: 0;
   width: 450px;
-  min-height: 100px;
   background-color: #fafafa;
   box-shadow: 4px 5px 15px -7px #606060;
+  padding: 20px;
   z-index: 2;
+  max-height: 450px;
+  overflow-y: auto;
+}
+
+.header .shop-cart::-webkit-scrollbar {
+  width: 10px;
+  background-color: transparent;
+}
+
+.header .shop-cart::-webkit-scrollbar-thumb {
+  background-color: #acacac;
+  border-radius: 5px;
+}
+
+.header .shop-cart .empty h3 {
+  font-size: 18px;
+}
+
+.header .shop-cart .item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header .shop-cart .item h2 {
+  font-size: 18px;
+  margin-bottom: 0.3em;
+}
+
+.header .shop-cart .item b {
+  color: #797979;
+}
+
+.header .shop-cart .item:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+.header .shop-cart .item img {
+  width: 60px;
+  aspect-ratio: 1/1;
+}
+
+.header .shop-cart .item .delete-icon {
+  margin-left: auto;
+  cursor: pointer;
+  transition: color, transform 0.3s ease;
+}
+
+.header .shop-cart .item .delete-icon:hover {
+  color: #ca5252;
+  transform: scale(1.1);
+}
+
+.header .shop-cart .summa {
+  width: 100%;
+  font-weight: 600;
+  font-size: 18px;
+	padding-top: 10px;
 }
 
 main {
