@@ -16,31 +16,53 @@ body {
 .wrapper {
   max-width: 1280px;
   width: 100%;
-  margin: 50px auto;
+  padding: 0 15px;
+  margin: 40px auto;
 }
 
-header .logo {
+.header {
+  position: relative;
+}
+
+.header__nav {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.header__logo {
   font-weight: 600;
   font-size: 20px;
+  margin-right: auto;
 }
 
-header ul.nav {
-  float: right;
+.header__menu {
   list-style: none;
+  display: flex;
+  gap: 25px;
 }
 
-header ul.nav li {
-  display: inline;
-  margin-left: 25px;
+.header__menu li {
   cursor: pointer;
-  transition: opacity 0.3s;
+  transition: opacity 0.3s ease;
 }
 
-header ul.nav li:hover {
+.header__menu li:hover {
   opacity: 0.5;
 }
 
-header .presentation {
+.header .shop-cart-button {
+  cursor: pointer;
+  transition: color, transform 0.3s ease;
+}
+
+.header .shop-cart-button:hover,
+.header .shop-cart-button.active {
+  color: #dc3d3d;
+  transform: scale(1.1);
+}
+
+.header__presentation {
   margin: 50px 0;
   background-image: url('./assets/img/home2.jpg');
   width: 100%;
@@ -53,26 +75,94 @@ header .presentation {
   position: relative;
 }
 
-header .presentation:after,
-header .presentation::before {
+.header__presentation:after,
+.header__presentation::before {
   position: absolute;
   left: 50px;
   width: 300px;
   color: #fff;
 }
 
-header .presentation:after {
+.header__presentation:after {
   content: 'Лучшие товары для вашего дома';
   top: 100px;
   font-size: 40px;
   font-weight: 600;
 }
 
-header .presentation:before {
+.header__presentation:before {
   content: 'по низким ценам ';
   top: 250px;
   font-size: 15px;
   font-weight: 300;
+}
+
+.header .shop-cart {
+  position: absolute;
+  top: 30px;
+  right: 0;
+  width: 450px;
+  min-height: 100px;
+  background-color: #fafafa;
+  box-shadow: 4px 5px 15px -7px #606060;
+  z-index: 2;
+}
+
+main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 50px;
+}
+
+main .item {
+  background-color: #f5f5f5;
+  overflow: clip;
+  border-radius: 10px 10px 0 0;
+  transition: transform 0.3s ease;
+  position: relative;
+  padding-bottom: 20px;
+}
+
+main .item img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  transition: transform 0.3s ease;
+}
+
+main .item img:hover {
+  transform: scale(1.05);
+}
+
+main h2,
+main p,
+main b {
+  margin: 10px 20px;
+  color: #333;
+}
+
+main b {
+  color: #5fa36a;
+}
+
+main .add-to-cart {
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+  background-color: #ca5252;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.3s ease;
+}
+
+main .add-to-cart:hover {
+  transform: scale(1.2);
 }
 
 footer {
