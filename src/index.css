@@ -212,13 +212,15 @@ body {
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 999;
   overflow: clip;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .full-item > div {
   max-width: 600px;
   width: 100%;
   position: relative;
-  margin: 10% auto;
   padding: 40px 30px;
   background-color: #fff;
   border-radius: 9px;

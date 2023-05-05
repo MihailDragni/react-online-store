@@ -1,21 +1,13 @@
-import React, { Component } from 'react'
 import Item from './Item'
 
-export class Items extends Component {
-  render() {
-    return (
-      <main>
-        {this.props.items.map((el) => (
-          <Item
-            onShowItem={this.props.onShowItem}
-            item={el}
-            key={el.id}
-            onAdd={this.props.onAdd}
-          />
-        ))}
-      </main>
-    )
-  }
+function Items({ items, onShowItem, onAdd }) {
+  return (
+    <main>
+      {items.map((el) => (
+        <Item onShowItem={onShowItem} item={el} key={el.id} onAdd={onAdd} />
+      ))}
+    </main>
+  )
 }
 
 export default Items
