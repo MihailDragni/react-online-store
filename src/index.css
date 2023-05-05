@@ -206,6 +206,24 @@ body {
   transform: scale(1.1);
 }
 
+.full-item {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  overflow: clip;
+}
+
+.full-item > div {
+  max-width: 600px;
+  width: 100%;
+  position: relative;
+  margin: 10% auto;
+  padding: 40px 30px;
+  background-color: #fff;
+  border-radius: 9px;
+}
+
 main {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -221,9 +239,11 @@ main .item {
   padding-bottom: 20px;
 }
 
-main .item img {
+main .item img,
+.full-item img {
   width: 100%;
   aspect-ratio: 1/1;
+  cursor: pointer;
   transition: transform 0.3s ease;
 }
 
@@ -232,17 +252,22 @@ main .item img:hover {
 }
 
 main h2,
+.full-item h2,
 main p,
-main b {
+.full-item p,
+main b,
+.full-item b {
   margin: 10px 20px;
   color: #333;
 }
 
-main b {
+main b,
+.full-item b {
   color: #5fa36a;
 }
 
-main .add-to-cart {
+main .add-to-cart,
+.full-item .add-to-cart {
   position: absolute;
   right: 15px;
   bottom: 15px;
@@ -259,7 +284,8 @@ main .add-to-cart {
   transition: transform 0.3s ease;
 }
 
-main .add-to-cart:hover {
+main .add-to-cart:hover,
+.full-item .add-to-cart:hover {
   transform: scale(1.2);
 }
 
