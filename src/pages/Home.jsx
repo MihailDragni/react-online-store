@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import Header from '../components/Header'
 import Footer from '../components/Footer'
 import Items from '../components/Items'
 import Categories from '../components/Categories'
-import ShowFullitem from '../components/ShowFullitem'
+import ShowFullitem from '../components/ShowFullItem'
+import { useSelector } from 'react-redux'
+import Presentation from '../components/Presentation'
 
 function Home() {
   const [currentItems, setCurrentItems] = useState([])
@@ -65,17 +66,11 @@ function Home() {
       price: '349.00',
     },
   ])
-  const [showFullItem, setShowFullItem] = useState(false)
-  const [fullItem, setFullItem] = useState({})
+  const { isOpen } = useSelector((state) => state.modal)
 
   useEffect(() => {
     setCurrentItems([...items])
   }, [items])
-
-  function onShowItem(item) {
-    setFullItem([...item])
-    setShowFullItem(!showFullItem)
-  }
 
   function chooseCategory(category) {
     if (category === 'all') {
@@ -85,23 +80,14 @@ function Home() {
     setCurrentItems(items.filter((el) => el.category === category))
   }
 
-
   return (
-    <div className="wrapper">
-      <Header />
+    <>
+      <Presentation />
       <Categories chooseCategory={chooseCategory} />
-      <Items
-        onShowItem={onShowItem}
-        items={currentItems}
-      />
-      {showFullItem && (
-        <ShowFullitem
-          onShowItem={onShowItem}
-          item={fullItem}
-        />
-      )}
+      <Items items={currentItems} />
+      {isOpen && <ShowFullitem />}
       <Footer />
-    </div>
+    </>
   )
 }
 

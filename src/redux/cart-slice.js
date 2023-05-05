@@ -30,8 +30,12 @@ const cartSlice = createSlice({
       state.orders = []
       state.totalPrice = 0
     },
+    changeCartOpen: (state) => {
+      state.cartOpen = !state.cartOpen
+    },
   },
 })
 
-export const { addToOrder, deleteOrder, clearOrders } = cartSlice.actions
+export const { addToOrder, deleteOrder, clearOrders, changeCartOpen } =
+  cartSlice.actions
 export default cartSlice.reducer

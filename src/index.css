@@ -54,6 +54,11 @@ body {
 .header__menu li:hover {
   opacity: 0.5;
 }
+.header__menu li a {
+  text-decoration: none;
+  color: #222;
+  font-weight: 300;
+}
 
 .header .shop-cart-button {
   cursor: pointer;

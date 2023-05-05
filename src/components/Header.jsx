@@ -1,17 +1,19 @@
-import React, { useState } from 'react'
 import { FaShoppingCart } from 'react-icons/fa'
 import Order from './Order'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { clearOrders } from '../redux/cart-slice'
+import { clearOrders, changeCartOpen } from '../redux/cart-slice'
 
 const Header = () => {
-  let [cartOpen, setCartOpen] = useState(false)
-  const { orders, totalPrice } = useSelector((state) => state.cart)
+  const { orders, totalPrice, cartOpen } = useSelector((state) => state.cart)
   const dispatch = useDispatch()
 
   function onClearOrders() {
     dispatch(clearOrders())
+  }
+
+  function onChangeCartHandler() {
+    dispatch(changeCartOpen())
   }
 
   return (
@@ -22,7 +24,7 @@ const Header = () => {
         </Link>
 
         <FaShoppingCart
-          onClick={() => setCartOpen((cartOpen = !cartOpen))}
+          onClick={onChangeCartHandler}
           className={`shop-cart-button ${cartOpen ? 'active' : ''}`}
         />
         {cartOpen && (
@@ -49,12 +51,14 @@ const Header = () => {
           </div>
         )}
         <ul className="header__menu menu">
-          <li>Про нас</li>
-          <li>Контакты</li>
-          <li>Кабинет</li>
+          <li>
+            <NavLink to={'/about'}>О нас</NavLink>
+          </li>
+          <li>
+            <NavLink to={'/contacts'}>Контакты</NavLink>
+          </li>
         </ul>
       </nav>
-      <div className="header__presentation"></div>
     </header>
   )
 }

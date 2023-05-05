@@ -1,11 +1,16 @@
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { addToOrder } from '../redux/cart-slice'
+import { onShowModal } from '../redux/modal-slice'
 
-function Item({ item, onShowItem, onAdd }) {
+function Item({ item }) {
   const dispatch = useDispatch()
 
   function addItemHandler() {
     dispatch(addToOrder(item))
+  }
+
+  function onShowModalHandler() {
+    dispatch(onShowModal(item))
   }
 
   return (
@@ -13,7 +18,7 @@ function Item({ item, onShowItem, onAdd }) {
       <img
         src={`./img/${item.img}`}
         alt={item.title}
-        onClick={() => onShowItem(item)}
+        onClick={onShowModalHandler}
       />
       <h2>{item.title}</h2>
       <p>{item.desc}</p>
