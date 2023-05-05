@@ -7,9 +7,11 @@ const showOrders = (props) => {
   props.orders.forEach((el) => (summa += Number.parseFloat(el.price)))
   return (
     <>
-      {props.orders.map((el) => (
-        <Order onDelete={props.onDelete} key={el.id} item={el} />
-      ))}
+      <div className="shop-cart__wrapper">
+        {props.orders.map((el) => (
+          <Order onDelete={props.onDelete} key={el.id} item={el} />
+        ))}
+      </div>
       <p className="summa">Сумма: {new Intl.NumberFormat().format(summa)}$</p>
     </>
   )
