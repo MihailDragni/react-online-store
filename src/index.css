@@ -36,6 +36,8 @@ body {
   font-size: 20px;
   margin-right: auto;
   cursor: pointer;
+  text-decoration: none;
+  color: #222;
 }
 
 .header__menu {
@@ -116,6 +118,19 @@ body {
   overflow-y: auto;
 }
 
+.header .shop-cart__row {
+  display: flex;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.header .shop-cart__row span {
+  color: #dc3d3d;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+}
+
 .header .shop-cart__wrapper::-webkit-scrollbar {
   width: 10px;
   background-color: transparent;
@@ -171,7 +186,6 @@ body {
   width: 100%;
   font-weight: 600;
   font-size: 18px;
-  padding-top: 20px;
 }
 
 .categories {

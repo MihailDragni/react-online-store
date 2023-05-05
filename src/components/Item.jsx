@@ -1,4 +1,13 @@
+import { useDispatch, useSelector } from 'react-redux'
+import { addToOrder } from '../redux/cart-slice'
+
 function Item({ item, onShowItem, onAdd }) {
+  const dispatch = useDispatch()
+
+  function addItemHandler() {
+    dispatch(addToOrder(item))
+  }
+
   return (
     <div className="item">
       <img
@@ -9,7 +18,7 @@ function Item({ item, onShowItem, onAdd }) {
       <h2>{item.title}</h2>
       <p>{item.desc}</p>
       <b>{item.price}$</b>
-      <div className="add-to-cart" onClick={() => onAdd(item)}>
+      <div className="add-to-cart" onClick={addItemHandler}>
         +
       </div>
     </div>

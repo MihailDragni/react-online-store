@@ -5,10 +5,9 @@ import Items from '../components/Items'
 import Categories from '../components/Categories'
 import ShowFullitem from '../components/ShowFullitem'
 
-function Home(props) {
-  const [orders, setOrders] = useState([])
+function Home() {
   const [currentItems, setCurrentItems] = useState([])
-  const [items, setItems] = useState([
+  const [items] = useState([
     {
       id: 1,
       title: 'Стул серый',
@@ -86,31 +85,18 @@ function Home(props) {
     setCurrentItems(items.filter((el) => el.category === category))
   }
 
-  function deleteOrder(id) {
-    setOrders(orders.filter((el) => el.id !== id))
-  }
-
-  function addToOrder(item) {
-    let isInArray = false
-    orders.forEach((el) => {
-      if (el.id === item.id) {
-        isInArray = true
-      }
-    })
-    if (!isInArray) {
-      setOrders([...orders, item])
-    }
-  }
 
   return (
     <div className="wrapper">
-      <Header orders={orders} onDelete={deleteOrder} />
+      <Header />
       <Categories chooseCategory={chooseCategory} />
-      <Items onShowItem={onShowItem} items={currentItems} onAdd={addToOrder} />
+      <Items
+        onShowItem={onShowItem}
+        items={currentItems}
+      />
       {showFullItem && (
         <ShowFullitem
           onShowItem={onShowItem}
-          onAdd={addToOrder}
           item={fullItem}
         />
       )}
