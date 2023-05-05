@@ -4,6 +4,7 @@ const initialState = {
   orders: [],
   cartOpen: false,
   totalPrice: 0,
+  counter: 0,
 }
 
 const cartSlice = createSlice({
@@ -21,14 +22,17 @@ const cartSlice = createSlice({
         state.orders = [...state.orders, action.payload]
         state.totalPrice += Number.parseFloat(action.payload.price)
       }
+      state.counter = Number(state.orders.length)
     },
     deleteOrder: (state, action) => {
       state.orders = state.orders.filter((el) => el.id !== action.payload.id)
       state.totalPrice -= Number.parseFloat(action.payload.price)
+      state.counter = Number(state.orders.length)
     },
     clearOrders: (state) => {
       state.orders = []
       state.totalPrice = 0
+			state.counter = Number(state.orders.length)
     },
     changeCartOpen: (state) => {
       state.cartOpen = !state.cartOpen

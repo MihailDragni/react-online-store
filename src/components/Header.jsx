@@ -5,7 +5,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { clearOrders, changeCartOpen } from '../redux/cart-slice'
 
 const Header = () => {
-  const { orders, totalPrice, cartOpen } = useSelector((state) => state.cart)
+  const { orders, totalPrice, cartOpen, counter } = useSelector(
+    (state) => state.cart
+  )
   const dispatch = useDispatch()
 
   function onClearOrders() {
@@ -22,11 +24,14 @@ const Header = () => {
         <Link to={'/'} className="header__logo logo">
           House Staff
         </Link>
+        <div className="header__cart">
+          <FaShoppingCart
+            onClick={onChangeCartHandler}
+            className={`shop-cart-button ${cartOpen ? 'active' : ''}`}
+          />
+          <span>{counter}</span>
+        </div>
 
-        <FaShoppingCart
-          onClick={onChangeCartHandler}
-          className={`shop-cart-button ${cartOpen ? 'active' : ''}`}
-        />
         {cartOpen && (
           <div className="shop-cart">
             {orders.length > 0 ? (
