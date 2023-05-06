@@ -24,12 +24,12 @@ const Header = () => {
         <Link to={'/'} className="header__logo logo">
           House Staff
         </Link>
-        <div className="header__cart">
+        <div className="header__cart cart">
           <FaShoppingCart
             onClick={onChangeCartHandler}
-            className={`shop-cart-button ${cartOpen ? 'active' : ''}`}
+            className={`cart__button ${cartOpen ? 'active' : ''}`}
           />
-          <span>{counter}</span>
+          <span className="cart__counter">{counter}</span>
         </div>
 
         {cartOpen && (
@@ -42,25 +42,30 @@ const Header = () => {
                   ))}
                 </div>
                 <div className="shop-cart__row">
-                  <p className="summa">
+                  <p className="shop-cart__total-price">
                     Сумма: {new Intl.NumberFormat().format(totalPrice)}$
                   </p>
-                  <span onClick={onClearOrders}>Очистить</span>
+                  <span className="shop-cart__clear" onClick={onClearOrders}>
+                    Очистить
+                  </span>
                 </div>
               </>
             ) : (
-              <div className="empty">
-                <h3>Товаров пока нет</h3>
-              </div>
+              <h3 className="shop-cart__empty">Товаров пока нет</h3>
             )}
           </div>
         )}
+
         <ul className="header__menu menu">
-          <li>
-            <NavLink to={'/about'}>О нас</NavLink>
+          <li className="menu__item">
+            <NavLink className="menu__link" to={'/about'}>
+              О нас
+            </NavLink>
           </li>
-          <li>
-            <NavLink to={'/contacts'}>Контакты</NavLink>
+          <li className="menu__item">
+            <NavLink className="menu__link" to={'/contacts'}>
+              Контакты
+            </NavLink>
           </li>
         </ul>
       </nav>

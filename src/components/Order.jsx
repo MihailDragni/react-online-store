@@ -8,13 +8,15 @@ function Order({ item }) {
     dispatch(deleteOrder(item))
   }
   return (
-    <div className="item">
-      <img src={`./img/${item.img}`} alt={item.title} />
-      <div>
-        <h2>{item.title}</h2>
-        <b>{item.price}$</b>
+    <div className="shop-cart__item order">
+      <div className="order__img">
+        <img src={`./img/${item.img}`} alt={item.title} />
       </div>
-      <FaTrash className="delete-icon" onClick={onDeleteHandler} />
+      <div className="order__column">
+        <h2 className="order__title">{item.title}</h2>
+        <span className="order__price">{item.price}$</span>
+      </div>
+      <FaTrash className="order__delete" onClick={onDeleteHandler} />
     </div>
   )
 }
