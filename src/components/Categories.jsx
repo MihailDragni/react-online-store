@@ -1,31 +1,39 @@
 const categories = [
   {
-    key: 'all',
+    category: 'all',
     name: 'Всё',
   },
   {
-    key: 'chairs',
+    category: 'chairs',
     name: 'Стулья',
   },
   {
-    key: 'tables',
+    category: 'tables',
     name: 'Столы',
   },
   {
-    key: 'sofa',
+    category: 'sofa',
     name: 'Диваны',
   },
   {
-    key: 'light',
+    category: 'light',
     name: 'Свет',
   },
 ]
 
-function Categories({ chooseCategory }) {
+function Categories({ category, setCategory }) {
   return (
     <div className="categories">
       {categories.map((el) => (
-        <div key={el.key} onClick={() => chooseCategory(el.key)}>
+        <div
+          className={
+            category === el.category
+              ? 'categories__item active'
+              : 'categories__item'
+          }
+          key={el.category}
+          onClick={() => setCategory(el.category)}
+        >
           {el.name}
         </div>
       ))}

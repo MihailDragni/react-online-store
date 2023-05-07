@@ -3,8 +3,9 @@ import { addToOrder } from '../redux/cart-slice'
 import { closeModal } from '../redux/modal-slice'
 
 function ShowFullitem() {
-  const { fullItem } = useSelector((store) => store.modal)
   const dispatch = useDispatch()
+  const { fullItem } = useSelector((store) => store.modal)
+
   function onAddHandler() {
     dispatch(addToOrder(fullItem))
   }
@@ -12,18 +13,27 @@ function ShowFullitem() {
   function onCloseModal(event) {
     dispatch(closeModal())
   }
+
   return (
     <div className="full-item" onClick={onCloseModal}>
-      <div onClick={(e) => e.stopPropagation()}>
+      <div
+        className="full-item__modal item"
+        onClick={(e) => e.stopPropagation()}
+      >
         <img
+          className="item__img"
           src={`./img/${fullItem.img}`}
           alt={fullItem.title}
         />
-        <h2>{fullItem.title}</h2>
-        <p>{fullItem.desc}</p>
-        <b>{fullItem.price}$</b>
-        <div className="add-to-cart" onClick={onAddHandler}>
-          +
+        <div className="item__body">
+          <h2 className="item__title">{fullItem.title}</h2>
+          <p className="item__desc">{fullItem.desc}</p>
+          <div className="item__row">
+            <span className="item__price">${fullItem.price}</span>
+            <div className="item__btn add-to-cart" onClick={onAddHandler}>
+              +
+            </div>
+          </div>
         </div>
       </div>
     </div>

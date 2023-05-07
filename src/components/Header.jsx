@@ -5,10 +5,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { clearOrders, changeCartOpen } from '../redux/cart-slice'
 
 const Header = () => {
-  const { orders, totalPrice, cartOpen, counter } = useSelector(
+  const dispatch = useDispatch()
+  const { orders, totalPrice, cartOpen, cartCounter } = useSelector(
     (state) => state.cart
   )
-  const dispatch = useDispatch()
 
   function onClearOrders() {
     dispatch(clearOrders())
@@ -29,7 +29,7 @@ const Header = () => {
             onClick={onChangeCartHandler}
             className={`cart__button ${cartOpen ? 'active' : ''}`}
           />
-          <span className="cart__counter">{counter}</span>
+          <span className="cart__counter">{cartCounter}</span>
         </div>
 
         {cartOpen && (
