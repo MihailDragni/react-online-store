@@ -28,7 +28,10 @@ function Home() {
     <>
       <main>
         <Presentation />
-        <Categories category={activeCategory} setCategory={setActiveCategory} />
+        <Categories
+          category={activeCategory}
+          setCategory={setActiveCategory}
+        />
 
         <Items items={items} />
         {isOpen && <ShowFullitem />}
