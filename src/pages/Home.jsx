@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import Items from '../components/Items'
 import Categories from '../components/Categories'
 import ShowFullitem from '../components/ShowFullItem'
@@ -20,7 +20,7 @@ function Home() {
         dispatch(fetchItems(items.items))
         dispatch(fetchCategories(items.categories))
       })
-  }, [])
+  }, [dispatch])
 
   return (
     <>

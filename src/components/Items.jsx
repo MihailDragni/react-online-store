@@ -13,7 +13,7 @@ function Items() {
     } else {
       setSortedItems(() => items.filter((el) => el.category === activeCategory))
     }
-    console.log(sortedItems)
+    // console.log(sortedItems)
   }, [activeCategory, items])
 
   return (
