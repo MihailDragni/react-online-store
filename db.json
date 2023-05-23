@@ -33,14 +33,6 @@
       "price": "25.00"
     },
     {
-      "id": 4,
-      "title": "Стул белый",
-      "img": "chair-white.jpeg",
-      "desc": "Белый стул - стильный и минималистичный элемент интерьера.",
-      "category": "chairs",
-      "price": "49.00"
-    },
-    {
       "id": 5,
       "title": "Стул белый",
       "img": "chair-white.jpeg",

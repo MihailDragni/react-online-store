@@ -2,33 +2,31 @@ import React, { useEffect, useState } from 'react'
 import Items from '../components/Items'
 import Categories from '../components/Categories'
 import ShowFullitem from '../components/ShowFullItem'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import Presentation from '../components/Presentation'
+import { fetchCategories } from '../redux/category-slice'
+import { fetchItems } from '../redux/items-slice'
 
 function Home() {
-  const [items, setItems] = useState([])
-  const [activeCategory, setActiveCategory] = useState('all')
-
+  const dispatch = useDispatch()
   const { isOpen } = useSelector((state) => state.modal)
 
   useEffect(() => {
     fetch(
-      `https://63289a38cc4c264fdedeab9b.mockapi.io/api/v1/items?${
-        activeCategory === 'all' ? '' : `category=${activeCategory}`
-      }`
+      'https://raw.githubusercontent.com/MihailDragni/react-online-store/main/db.json'
     )
       .then((res) => res.json())
       .then((items) => {
-        setItems(items)
+        dispatch(fetchItems(items.items))
+        dispatch(fetchCategories(items.categories))
       })
-  }, [activeCategory])
+  }, [])
 
   return (
     <>
       <Presentation />
-      <Categories category={activeCategory} setCategory={setActiveCategory} />
-
-      <Items items={items} />
+      <Categories />
+      <Items />
       {isOpen && <ShowFullitem />}
     </>
   )

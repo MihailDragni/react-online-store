@@ -1,38 +1,21 @@
-const categories = [
-  {
-    category: 'all',
-    name: 'Всё',
-  },
-  {
-    category: 'chairs',
-    name: 'Стулья',
-  },
-  {
-    category: 'tables',
-    name: 'Столы',
-  },
-  {
-    category: 'sofa',
-    name: 'Диваны',
-  },
-  {
-    category: 'light',
-    name: 'Свет',
-  },
-]
+import { useDispatch, useSelector } from 'react-redux'
+import { setActiveCategory } from '../redux/category-slice'
 
-function Categories({ category, setCategory }) {
+function Categories() {
+  const dispatch = useDispatch()
+  const { categories, activeCategory } = useSelector((state) => state.category)
+
   return (
     <div className="categories">
       {categories.map((el) => (
         <div
           className={
-            category === el.category
+            activeCategory === el.category
               ? 'categories__item active'
               : 'categories__item'
           }
           key={el.category}
-          onClick={() => setCategory(el.category)}
+          onClick={() => dispatch(setActiveCategory(el.category))}
         >
           {el.name}
         </div>
