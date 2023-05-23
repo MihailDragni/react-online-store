@@ -25,9 +25,8 @@ function Home() {
 
   return (
     <>
-      <main>
-        <Presentation />
-        <Categories category={activeCategory} setCategory={setActiveCategory} />
+      <Presentation />
+      <Categories category={activeCategory} setCategory={setActiveCategory} />
 
       <Items items={items} />
       {isOpen && <ShowFullitem />}
