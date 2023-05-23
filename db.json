@@ -45,7 +45,7 @@
       "title": "Кресло",
       "img": "Armchair.jpg",
       "desc": "Мягкое кресло - уютное место для отдыха и релакса.",
-      "category": "armchair",
+      "category": "chairs",
       "price": "249.00"
     },
     {
@@ -53,7 +53,7 @@
       "title": "Стол для работы",
       "img": "Work-table.jpg",
       "desc": "Прочный, удобный, просторный стол для эффективной работы дома или офиса.",
-      "category": "table",
+      "category": "tables",
       "price": "349.00"
     }
   ],
