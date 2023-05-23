@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import Footer from '../components/Footer'
 import Items from '../components/Items'
 import Categories from '../components/Categories'
 import ShowFullitem from '../components/ShowFullItem'
@@ -28,15 +27,10 @@ function Home() {
     <>
       <main>
         <Presentation />
-        <Categories
-          category={activeCategory}
-          setCategory={setActiveCategory}
-        />
+        <Categories category={activeCategory} setCategory={setActiveCategory} />
 
-        <Items items={items} />
-        {isOpen && <ShowFullitem />}
-      </main>
-      <Footer />
+      <Items items={items} />
+      {isOpen && <ShowFullitem />}
     </>
   )
 }
